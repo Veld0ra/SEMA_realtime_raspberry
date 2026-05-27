@@ -33,3 +33,4 @@ async def receber_resposta(ws):
             print("\n❌ ERRO:", json.dumps(event, indent=2))
             break
 
+
