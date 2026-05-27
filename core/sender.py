@@ -1,27 +1,13 @@
 import json
 
 
-async def iniciar_sessao(ws, memoria_fixa="", memoria_buffer=""):
-
-    instructions = f"""
-Você é a SEMA, uma assistente útil, amigavel e legal.
-
-# MEMÓRIA PERSISTENTE
-{memoria_fixa}
-
-# CONTEXTO RECENTE
-{memoria_buffer}
-
-Regras:
-- Responda de forma clara
-- Use o contexto quando necessário
-"""
+async def iniciar_sessao(ws):
 
     await ws.send(json.dumps({
         "type": "session.update",
         "session": {
             "type": "realtime",
-            "instructions": instructions
+            "instructions": "Você é a SEMA, uma assistente útil e direta."
         }
     }))
 
@@ -48,3 +34,4 @@ async def criar_resposta(ws):
     await ws.send(json.dumps({
         "type": "response.create"
     }))
+
